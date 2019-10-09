@@ -1,16 +1,14 @@
-from classes.ListsManager import ListsManager
-from classes.ListManager import ListManager
-
 import saved_lists
 import saved_data
+
+from classes.ListsManager import ListsManager
+from classes.ListManager import ListManager
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
 logging.disable()
 
-def lists_manager_tester():
-    
-    
+def main():
     my_lists = saved_lists.lists
     logging.debug('My lists are {}'.format(my_lists))
     my_data = saved_data.data
@@ -27,6 +25,6 @@ def lists_manager_tester():
             if result == True:
                 break
     
-lists_manager_tester()
+main()
 
 

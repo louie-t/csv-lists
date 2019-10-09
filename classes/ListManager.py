@@ -7,7 +7,6 @@ logging.basicConfig(level=logging.DEBUG)
 logging.disable()
 
 class ListManager:
-    
     def convert_file_to_list(self, data):
         logging.debug("convert_file_to_list() call")
         file = open(data[1])
