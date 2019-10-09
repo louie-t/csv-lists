@@ -1,15 +1,32 @@
+from classes.ListsManager import ListsManager
 from classes.ListManager import ListManager
-      
-def main():
-    list_name = "To Do List"
-    list_path = ".\\lists\\to_do_list.csv"
-    list_len = 3
+
+import saved_lists
+import saved_data
+
+import logging
+logging.basicConfig(level=logging.DEBUG)
+logging.disable()
+
+def lists_manager_tester():
     
-    list1 = ListManager(list_name, list_path, list_len)
+    
+    my_lists = saved_lists.lists
+    logging.debug('My lists are {}'.format(my_lists))
+    my_data = saved_data.data
+    logging.debug('My data is {}'.format(my_data))
+    
+    my_lists_manager = ListsManager()
     
     while True:
-        list1.menu(list1.get_input())
+        list_to_view = my_lists_manager.menu(my_lists_manager.get_input())
+        while list_to_view != None:
+            data = my_lists_manager.my_data[list_to_view]
+            temp_list = ListManager()
+            result = temp_list.menu(temp_list.get_input(data), data)
+            if result == True:
+                break
     
-main()
+lists_manager_tester()
 
 
