@@ -1,2 +1,4 @@
-data = [['Homework', '.\\lists\\homework.csv', 2, ['Task', 'Status']],
- ['Movies', '.\\lists\\movies.csv', 3, ['Title', 'Rating', 'Status']]]
+data = [{'category_names': ['Task', 'Status'],
+  'category_num': 2,
+  'name': 'Homework',
+  'path': '.\\lists\\homework.csv'}]

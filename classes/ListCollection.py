@@ -61,13 +61,13 @@ class ListCollection:
                 categories.append(category)
                 num_categories += 1
         
-        data_list = [list_name, list_path, num_categories, categories]
+        data_list = {'name':list_name, 'path': list_path, 'category_num': num_categories, 'category_names': categories}
         return data_list
         
     def create_list(self, data_list):
         logging.debug('Creating list')
         
-        file = open(data_list[1], 'w')
+        file = open(data_list['path'], 'w')
         file.close()
         
         self.my_data.append(data_list)
@@ -75,13 +75,13 @@ class ListCollection:
         file.write('data = ' + pprint.pformat(self.my_data) + '\n')
         file.close()
 
-        self.my_lists.append(data_list[0])
+        self.my_lists.append(data_list['name'])
         file = open(self.lists_path, 'w')
         file.write('lists = ' + pprint.pformat(self.my_lists) + '\n')
         file.close()
         
         my_list = ListManager()
-        my_list.add_item(data_list[3], data_list)
+        my_list.add_item(data_list['category_names'], data_list)
         
     def get_list_name(self):
         list_name = input('\nWhat is the list name? Type quit to quit.\n')
@@ -94,10 +94,10 @@ class ListCollection:
             if list_name == 'Quit':
                 break
             for i in range(len(self.my_lists)):
-                if list_name == self.my_data[i][0]:
+                if list_name == self.my_data[i]['name']:
                     print('List to be removed is {}\n'.format(list_name))
                     trash_path = '.\\trash'
-                    shutil.move(self.my_data[i][1], trash_path)
+                    shutil.move(self.my_data[i]['path'], trash_path)
                     
                     del self.my_lists[i]
                     file = open(self.lists_path, 'w')

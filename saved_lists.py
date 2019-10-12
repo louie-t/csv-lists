@@ -1,1 +1,1 @@
-lists = ['Homework', 'Movies']
+lists = ['Homework']

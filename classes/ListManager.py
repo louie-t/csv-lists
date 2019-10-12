@@ -9,7 +9,7 @@ logging.disable(level=logging.DEBUG)
 class ListManager:
     def convert_file_to_list(self, data):
         logging.debug('convert_file_to_list() call')
-        file = open(data[1])
+        file = open(data['path'])
         reader = csv.reader(file)
         new_list = list(reader)
         file.close()
@@ -20,7 +20,7 @@ class ListManager:
         new_list = self.convert_file_to_list(data)
         new_list.append(item)
         
-        file = open(data[1], 'w', newline='')
+        file = open(data['path'], 'w', newline='')
         writer = csv.writer(file)
         
         for i in range(len(new_list)):
@@ -30,9 +30,9 @@ class ListManager:
     def get_new_item(self, data):
         logging.debug('get_item() call')
         new_item = list()
-        for i in range(0, data[2]):
+        for i in range(0, data['category_num']):
             value = input('What is entry for "' +\
-            data[3][i]  + '" on "' + data[0] + '"?\n')
+            data['category_names'][i]  + '" on "' + data['name'] + '"?\n')
             value = value.title()
             new_item.append(value)
        
@@ -58,7 +58,7 @@ class ListManager:
             print('Item could not be found in list.')
             return
         else:
-            file = open(data[1], 'w', newline='')
+            file = open(data['path'], 'w', newline='')
             writer = csv.writer(file)
             logging.debug('Rewrote the list.')
             for i in range(len(new_list)):
@@ -88,16 +88,16 @@ class ListManager:
             
         else:
             new_item = []
-            for i in range(0, data[2]):
+            for i in range(0, data['category_num']):
                 value = input('What is the entry for "' +\
-                new_list[0][i]  + '" on "' + data[0] + '"?\n\n')
+                new_list[0][i]  + '" on "' + data['name'] + '"?\n\n')
                 value = value.title()
                 new_item.append(value)
         
             new_list.insert(new_item_index, new_item)
             del new_list[new_item_index + 1]
             
-            file = open(data[1], 'w', newline='')
+            file = open(data['path'], 'w', newline='')
             writer = csv.writer(file)
             
             for i in range(len(new_list)):
