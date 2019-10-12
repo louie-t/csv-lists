@@ -1,7 +1,7 @@
 import pprint
 import sys
 import shutil
-pp = pprint.PrettyPrinter(indent=4,width=80)
+pp = pprint.PrettyPrinter(indent=4,width=60)
 
 import saved_lists
 import saved_data

@@ -1,6 +1,6 @@
 import csv
 import pprint
-pp = pprint.PrettyPrinter(indent=4,width=80)
+pp = pprint.PrettyPrinter(indent=4,width=60)
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
